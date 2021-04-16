@@ -4,6 +4,8 @@ resource "google_storage_bucket" "main" {
   website {
     main_page_suffix = "index.html"
   }
+
+  uniform_bucket_level_access = true
 }
 
 resource "google_storage_bucket_iam_member" "public" {
