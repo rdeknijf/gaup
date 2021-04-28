@@ -7,10 +7,11 @@ function fetchLatest(packageName) {
     const url = `https://api.github.com/repos/${packageName}/releases/latest`;
 
     fetch(url).then(response => response.json()).then(response => {
-      if (response.name) {
-        resolve({packageName: packageName, version: response.name})
+
+      if (response.tag_name) {
+        resolve({packageName: packageName, version: response.tag_name})
       } else {
-        reject(null)
+        reject('`tag_name` could not be found in the result from Github')
       }
     })
 
